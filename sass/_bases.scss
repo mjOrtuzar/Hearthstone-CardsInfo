@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/*inicio sesion*/
+#logeo-Registro{
+    background-image: url('../css/img/hearthstoneWallpaper.jpg');
+    height: 100vh;
+    background-size:cover;
+
+}
+.logoWebPage{
+    text-align: center;
+    img{
+      width: 400px;
+      
+    }
+}
+.logBox{
+    
+    .BoxLogeo{
+        text-align: center;
+        box-sizing: content-box;
+        position: relative;
+        top:4em;
+        background-color: rgba(0,0,0,.8);
+        #logEmail,#logPass{
+            display: block;
+            margin:auto;
+            margin-bottom: 4%;
+            z-index: 5;
+        }
+        h4{
+            color: #fff;
+        }
+    }
+}
+/*registro*/
+.modal-dialog{
+    text-align: center;
+    position: relative;
+    top: 18em;
+    #email,#contrasena{
+        display: block;
+        margin: auto;
+        margin-bottom: 4px;
+        
+    }
+}
+/*header*/
+ul{
+    li{
+        list-style:none;
+        display: inline;
+    }
+}

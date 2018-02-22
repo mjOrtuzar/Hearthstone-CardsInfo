@@ -8,10 +8,108 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+<!-- login -->
+<section id="logeo-Registro">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="logoWebPage">
+                    <img src="css/img/logo.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 logBox">
+                    <div class="BoxLogeo jumbotron ">
+                            <h4>Bienvenido!</h4>
+                            <input id="logEmail" type="email" placeholder="ingresa email">
+                            <input  id="logPass" type="password" placeholder="ingresa contraseña">
+                            <button onclick="ingresa()" class="btn btn-default">logeate!</button>
+                            <button class="btn btn-default" type="button" data-toggle="modal" data-target="#myModal">Eres Nuevo? Registrate</button>
+                    </div>
+            </div>
+        </div>
+        
+        <!--modal-->
 
-    
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!--contenido modal-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">registro de usuarios</h4>
+                        </div>
+                        <div class="modal-body">
+                                <label  class="visuallyhidden">Ingresa tu correo</label>
+                                <input id="email" type="email" placeholder="ingresa email">
+                                <label  class="visuallyhidden">Ingresa tu contraseña!</label>
+                                <input  id="contrasena" type="password" placeholder="ingresa contraseña">
+                        </div>
+                        <div class="modal-footer">
+                                <button class="btn btn-default" onclick="registrar()"> Unete!</button>
+                        </div>
+                            
+                    </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!--logIn sucess -->
+    <header id="head" class="nav navbar-default">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <h3>HearthStone </h3>
+                    <p>cards info</p>
+                </div>
+                <div class="col-md-6 ">
+                    <ul>
+                        <li>'imgUser'</li>
+                        <li><button class="btn" onclick="cerrar()"> logOut </button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="SearchBar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <form id="searchForm">
+                        <label for="search-keyword" class="visuallyhidden">Bienvenido, que buscas?</label>
+                        <input id="cardInput" type="text" name="search-keyword" placeholder="Campeon de Ventormenta" required>
+                        <input id="searchInput" class="btn btn-primary" type="submit" value="Buscar">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="cardsContainer">
+
+    </section>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+    <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA4XodQkJlijHgjHF7HESLLCkY6HbQa3E4",
+    authDomain: "insta-voice.firebaseapp.com",
+    databaseURL: "https://insta-voice.firebaseio.com",
+    projectId: "insta-voice",
+    storageBucket: "insta-voice.appspot.com",
+    messagingSenderId: "836585165317"
+  };
+  firebase.initializeApp(config);
+</script>
 
     <script src="js/jquery-3.2.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
