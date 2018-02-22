@@ -13,7 +13,7 @@ $(document).ready(()=> {
     datatype: 'json',
     
     beforeSend: function(xhr) {
-	xhr.setRequestHeader("X-Mashape-Authorization", key); // Enter here your Mashape key
+	xhr.setRequestHeader("X-Mashape-Authorization", key); // aqui va la key de Mashape 
     }
    })
    .done(function(response) {
@@ -29,18 +29,22 @@ $(document).ready(()=> {
     
 });
 
-
-
+// funcion para limpiar los inputs de registro y alerta de correo
+$("#btnClean").click(function() { 
+    $('#email').empty();
+    $('#contrasena').empty();
+    alert('se ha enviado un link de confirmacion a tu correo :)')
+})
 
 //FireBase
 //funcion para registrar usuario
 function registrar(){
     let email = $('#email').val(); //rescato valor input
     let pass = $('#contrasena').val(); //rescato valor input contraseña
-
+    
     firebase.auth().createUserWithEmailAndPassword(email, pass)
     .then(function() {
-        verficar();
+        verficar();    
     })
     .catch(function(error) {
         // Handle Errors here.
@@ -81,9 +85,8 @@ function observador() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           // User is signed in.
-          $("#head").show();
-          $("#SearchBar").show();
-          $("#logeo-Registro").hide();
+          aparece(user);
+
           console.log('existe usuario activo');
           var displayName = user.displayName;
           var email = user.email;
@@ -102,11 +105,22 @@ function observador() {
 }
 observador();
 
+function aparece(user) {
+    var user = user;
+    if(user.emailVerified){
+        $("#head").show();
+        $("#SearchBar").show();
+        $("#logeo-Registro").hide();
+    }
+   
+}
+
 function verficar() { // esta funcion se ejecutara cada vez que un usuario se registre en la aplicacion
     var user = firebase.auth().currentUser;
 
     user.sendEmailVerification().then(function() {
-        alert('se ha enviado un correo de verificacion :)')
+        
+
     // Email sent.
     }).catch(function(error) {
     // An error happened.
