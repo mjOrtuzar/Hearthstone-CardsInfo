@@ -38,7 +38,11 @@ function registrar(){
     let email = $('#email').val(); //rescato valor input
     let pass = $('#contrasena').val(); //rescato valor input contraseña
 
-    firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error) {
+    firebase.auth().createUserWithEmailAndPassword(email, pass)
+    .then(function() {
+        verficar();
+    })
+    .catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -97,3 +101,14 @@ function observador() {
       });
 }
 observador();
+
+function verficar() { // esta funcion se ejecutara cada vez que un usuario se registre en la aplicacion
+    var user = firebase.auth().currentUser;
+
+    user.sendEmailVerification().then(function() {
+        alert('se ha enviado un correo de verificacion :)')
+    // Email sent.
+    }).catch(function(error) {
+    // An error happened.
+    });
+}
