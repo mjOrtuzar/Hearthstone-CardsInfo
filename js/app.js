@@ -7,7 +7,7 @@ $(document).ready(()=> {
    const key = 'JtVli4v6fRmsh65TawpfbbmmuxO0p1GDxNujsnGMnHzW41x5uB';
 
    $.ajax({
-    url: 'https://omgvamp-hearthstone-v1.p.mashape.com/cards', // The URL to the API. You can get this by clicking on "Show CURL example" from an API profile
+    url: 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/', // The URL to the API. You can get this by clicking on "Show CURL example" from an API profile
     type: 'GET', // The HTTP Method
     data: {}, // Additional parameters here
     datatype: 'json',
@@ -24,10 +24,47 @@ $(document).ready(()=> {
         console.log('error al cargar la api');
    })
 
+
+
+   /*
+   $form = $("#searchForm") //form de busqueda
+   $param = $("#cardInput") //input de busqueda
+   $btn = $("#searchInput") //boton de busqueda
+   $cardContent = $("#cardsContainer") //contenedor de cartas
    
-    
+    let crds 
+
+    //evento submit
+
+    $form.submit(function(e) {
+        e.preventDefault();
+        $cardContent.html('');
+        crds = $param.val();
+        getCard();
+    });
+
+    //peticion y llamada al json
+
+    function getCard() {
+        $.ajax({
+            url:"https://omgvamp-hearthstone-v1.p.mashape.com/cards/{crds}",
+        }).done(addCard)
+        .fail(handleError);
+    }
+    function handleError() {
+        console.log('se ha presentado un error en la pagina');
+    }
+
+    function addCard(card) {
+        console.log(card);
+    }
+   */
     
 });
+
+function showInfo() {
+
+}
 
 // funcion para limpiar los inputs de registro y alerta de correo
 $("#btnClean").click(function() { 
@@ -119,8 +156,6 @@ function verficar() { // esta funcion se ejecutara cada vez que un usuario se re
     var user = firebase.auth().currentUser;
 
     user.sendEmailVerification().then(function() {
-        
-
     // Email sent.
     }).catch(function(error) {
     // An error happened.
